@@ -187,11 +187,11 @@ export default function CombinedActivityCards() {
             <span className="font-bold">No</span> if it does not. Write your answers on a separate sheet of paper.
           </p>
           <ul className="space-y-4 text-lg">
-            <li>1. During an earthquake, Ana quickly hides under a sturdy table to protect herself. <strong>Yes</strong></li>
-            <li>2. While playing outside, Pedro sees ashfall from a volcanic eruption and decides not to wear a mask. <strong>No</strong></li>
-            <li>3. During an earthquake drill, students calmly walk to the evacuation area without pushing. <strong>Yes</strong></li>
-            <li>4. Juan and his family stay near the river even after PHILVOCS warns of possible lahar flow from the volcano. <strong>No</strong></li>
-            <li>5. After an earthquake, Maria checks if her younger siblings are safe before leaving the house. <strong>Yes</strong></li>
+            <li>1. During an earthquake, Ana quickly hides under a sturdy table to protect herself. </li>
+            <li>2. While playing outside, Pedro sees ashfall from a volcanic eruption and decides not to wear a mask. </li>
+            <li>3. During an earthquake drill, students calmly walk to the evacuation area without pushing.</li>
+            <li>4. Juan and his family stay near the river even after PHILVOCS warns of possible lahar flow from the volcano. </li>
+            <li>5. After an earthquake, Maria checks if her younger siblings are safe before leaving the house. </li>
           </ul>
         </div>
       </div>
