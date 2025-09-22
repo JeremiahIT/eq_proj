@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from "react";
-import { FaArrowLeft, FaPlay, FaInstagram, FaFacebook, FaTiktok, FaTwitter, FaYoutube } from 'react-icons/fa'; // Importing icons
 
 export default function VideoPage() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -58,7 +57,7 @@ export default function VideoPage() {
                 className="bg-white/10 backdrop-blur-xl text-white p-3 rounded-full cursor-pointer hover:bg-white/20 transition-colors"
                 aria-label="Go Back"
               >
-                <FaArrowLeft />
+               
               </button>
             </div>
           
@@ -86,7 +85,7 @@ export default function VideoPage() {
                     onClick={handlePlayVideo}
                     className="flex items-center justify-center space-x-2 bg-white/20 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:bg-white/30 transition-colors transform hover:scale-105"
                   >
-                    <FaPlay className="mr-2" />
+                    
                     <span>Play Video</span>
                   </button>
                 </div>
