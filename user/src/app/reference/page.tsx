@@ -110,6 +110,7 @@ export default function CombinedActivityCards() {
           </div>
           {/* End of Key Takeaway Box */}
           
+          <h1 className="text-3xl font-extrabold text-white text-center mb-6">Reference :</h1>
           <div className="flex justify-center items-center relative mb-8">
             <div className="relative z-10">
               <Image src="/referencecard.png" alt="Reference Card" width={200} height={150} className="w-96" />
