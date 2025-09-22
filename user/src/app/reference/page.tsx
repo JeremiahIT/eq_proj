@@ -90,7 +90,7 @@ export default function CombinedActivityCards() {
           <div className="flex justify-center items-center relative mb-8">
             <div className="relative z-10">
               {/* Corrected the img tag to use the Image component with a simple path */}
-              <Image src="/referencecard.png" alt="Reference Card" width={384} height={300} className="w-96" />
+              <Image src="/referencecard.png" alt="Reference Card" width={200} height={150} className="w-96" />
             </div>
           </div>
           <h2 className="text-2xl font-bold text-white mb-6">Books and Modules</h2>
