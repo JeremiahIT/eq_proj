@@ -1,9 +1,12 @@
 'use client';
 
 import { useState } from "react";
+import { useRouter } from 'next/navigation';
 
 export default function VideoPage() {
+  const router = useRouter();
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handlePlayVideo = () => {
     setIsPlaying(true);
@@ -13,8 +16,23 @@ export default function VideoPage() {
     window.history.back();
   };
 
+  const menuItems = [
+    { name: 'Overview', path: '/overview' },
+    { name: 'Content Card', path: '/contentcard' },
+    { name: 'Word Hunt', path: '/wordhunt' },
+    { name: 'Assessment', path: '/assesment' },
+    { name: 'Activity Card', path: '/activitycard' },
+    { name: 'Answer Key', path: '/answerkey' },
+    { name: 'Reference', path: '/reference' },
+  ];
+
+  const handleMenuItemClick = (path: string) => {
+    router.push(path);
+    setIsModalOpen(false); // Close modal on navigation
+  };
+
   // Your YouTube video ID from the provided link
-  const youtubeVideoId = 'oeN6dB299pM'; 
+  const youtubeVideoId = 'oeN6dB299pM';
 
   return (
     <>
@@ -39,6 +57,20 @@ export default function VideoPage() {
             opacity: 0.6;
           }
         }
+        /* Keyframes for modal animation */
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        .animate-fade-in {
+          animation: fade-in 0.3s ease-out forwards;
+        }
       `}</style>
 
       <div className="relative min-h-screen flex flex-col">
@@ -54,13 +86,18 @@ export default function VideoPage() {
             <div className="flex items-center space-x-4 mb-4 sm:mb-0">
               <button
                 onClick={handleGoBack}
-                className="bg-white/10 backdrop-blur-xl text-white p-3 rounded-full cursor-pointer hover:bg-white/20 transition-colors"
+                className="text-white hover:text-gray-400 font-bold transition duration-300"
                 aria-label="Go Back"
               >
-               
+                BACK
               </button>
             </div>
-          
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="text-white hover:text-gray-400 font-bold transition duration-300"
+            >
+              MENU
+            </button>
           </header>
 
           {/* Main Content Area */}
@@ -85,7 +122,6 @@ export default function VideoPage() {
                     onClick={handlePlayVideo}
                     className="flex items-center justify-center space-x-2 bg-white/20 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:bg-white/30 transition-colors transform hover:scale-105"
                   >
-                    
                     <span>Play Video</span>
                   </button>
                 </div>
@@ -93,6 +129,38 @@ export default function VideoPage() {
             </div>
           </main>
 
+          {/* Modal Overlay */}
+          {isModalOpen && (
+            <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+              {/* Modal Container */}
+              <div className="bg-gray-900/80 backdrop-blur-md border border-gray-700 rounded-lg p-8 w-11/12 max-w-md relative animate-fade-in">
+                {/* Close Button */}
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="absolute top-4 right-4 text-gray-400 hover:text-white transition duration-200"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+                <h2 className="text-3xl font-extrabold text-white text-center mb-6 font-orbitron">
+                  MENU
+                </h2>
+                <div className="grid grid-cols-1 gap-4">
+                  {menuItems.map((item) => (
+                    <button
+                      key={item.name}
+                      onClick={() => handleMenuItemClick(item.path)}
+                      className="bg-gray-800 text-white font-bold py-4 px-6 rounded-lg shadow-lg hover:bg-gray-700 transition duration-300 text-lg border border-gray-700 hover:border-orange-500/50"
+                    >
+                      {item.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+          
           {/* You can add a footer or other content here if needed */}
           <footer className="text-center text-gray-400 mt-8">
             <p>&copy; {new Date().getFullYear()} My Video Site. All rights reserved.</p>

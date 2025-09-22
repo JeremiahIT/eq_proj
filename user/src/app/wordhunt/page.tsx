@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 export default function WordHuntPage() {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const hasNavigatedRef = useRef(false);
   const WORDS = [
     'EARTHQUAKE', 'ERUPTION', 'AFTERSHOCK', 'TSUNAMI', 'DROP',
@@ -29,14 +30,14 @@ export default function WordHuntPage() {
     };
   };
   const DIRECTIONS = [
-    { dr: 0, dc: 1 },   // right
-    { dr: 0, dc: -1 },  // left
-    { dr: 1, dc: 0 },   // down
-    { dr: -1, dc: 0 },  // up
-    { dr: 1, dc: 1 },   // down-right
-    { dr: 1, dc: -1 },  // down-left
-    { dr: -1, dc: 1 },  // up-right
-    { dr: -1, dc: -1 }, // up-left
+    { dr: 0, dc: 1 },    // right
+    { dr: 0, dc: -1 },   // left
+    { dr: 1, dc: 0 },    // down
+    { dr: -1, dc: 0 },   // up
+    { dr: 1, dc: 1 },    // down-right
+    { dr: 1, dc: -1 },   // down-left
+    { dr: -1, dc: 1 },   // up-right
+    { dr: -1, dc: -1 },  // up-left
   ];
 
   type PlacedWord = { word: string; cells: Array<{ r: number; c: number }>; };
@@ -150,7 +151,7 @@ export default function WordHuntPage() {
   useEffect(() => {
     setMounted(true);
     const handleWheel = (event: WheelEvent) => {
-      if (hasNavigatedRef.current) return;
+      if (hasNavigatedRef.current || isModalOpen) return;
       if (event.deltaY < -20) {
         hasNavigatedRef.current = true;
         router.back();
@@ -165,7 +166,7 @@ export default function WordHuntPage() {
       touchStartY = e.touches[0]?.clientY ?? 0;
     };
     const onTouchMove = (e: TouchEvent) => {
-      if (hasNavigatedRef.current) return;
+      if (hasNavigatedRef.current || isModalOpen) return;
       const currentY = e.touches[0]?.clientY ?? 0;
       const deltaY = touchStartY - currentY; // positive if swiping up, negative if swiping down
       if (deltaY < -30) {
@@ -185,9 +186,25 @@ export default function WordHuntPage() {
       window.removeEventListener('touchstart', onTouchStart as EventListener);
       window.removeEventListener('touchmove', onTouchMove as EventListener);
     };
-  }, [router]);
+  }, [router, isModalOpen]);
 
   const remainingCount = WORDS.length - foundWords.length;
+
+  const menuItems = [
+    { name: 'Home', path: '/' },
+    { name: 'Overview', path: '/overview' },
+    { name: 'Content Card', path: '/contentcard' },
+    { name: 'Word Hunt', path: '/wordhunt' },
+    { name: 'Assessment', path: '/assesment' },
+    { name: 'Activity Card', path: '/activitycard' },
+    { name: 'Answer Key', path: '/answerkey' },
+    { name: 'Reference', path: '/reference' },
+  ];
+
+  const handleMenuItemClick = (path: string) => {
+    router.push(path);
+    setIsModalOpen(false); // Close modal on navigation
+  };
 
   return (
     <div className={`min-h-screen flex flex-col p-4 bg-gradient-to-b from-[#000000] to-[#160300] text-white relative overflow-hidden transition-all duration-500 ease-out ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
@@ -195,12 +212,12 @@ export default function WordHuntPage() {
       <header className="absolute top-0 right-0 p-8 flex space-x-4 z-10">
         <button onClick={() => router.push('/')} className="text-white hover:text-gray-400 font-bold transition duration-300">HOME</button>
         <button onClick={() => router.push('/video')} className="text-white hover:text-gray-400 font-bold transition duration-300">WATCH VIDEO</button>
-        <button onClick={() => router.push('/about')} className="text-white hover:text-gray-400 font-bold transition duration-300">MENU</button>
+        <button onClick={() => setIsModalOpen(true)} className="text-white hover:text-gray-400 font-bold transition duration-300">MENU</button>
       </header>
 
       <main className="flex-1 flex items-center justify-center pt-24 pb-12" onMouseUp={onMouseUpAnywhere} onTouchEnd={onMouseUpAnywhere}>
         <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-5 gap-8 items-start px-2 sm:px-4">
-          {/* Left: Enhanced Instruction Card (no blackboard) */}
+          {/* Left: Enhanced Instruction Card */}
           <div className={`w-full transition-all duration-500 ease-out md:col-span-2 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
             <div className="relative rounded-2xl p-6 sm:p-7 md:p-8 bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl overflow-hidden">
               <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(1200px 400px at -10% -10%, rgba(255,120,0,0.15), transparent 60%)' }} />
@@ -267,6 +284,59 @@ export default function WordHuntPage() {
           </div>
         </div>
       </main>
+
+      {/* Modal Overlay */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+          {/* Modal Container */}
+          <div className="bg-gray-900/80 backdrop-blur-md border border-gray-700 rounded-lg p-8 w-11/12 max-w-md relative animate-fade-in">
+            {/* Close Button */}
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-white transition duration-200"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <h2 className="text-3xl font-extrabold text-white text-center mb-6 font-orbitron">
+              MENU
+            </h2>
+            <div className="grid grid-cols-1 gap-4">
+              {menuItems.map((item) => (
+                <button
+                  key={item.name}
+                  onClick={() => handleMenuItemClick(item.path)}
+                  className="bg-gray-800 text-white font-bold py-4 px-6 rounded-lg shadow-lg hover:bg-gray-700 transition duration-300 text-lg border border-gray-700 hover:border-orange-500/50"
+                >
+                  {item.name}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Styles for Modal Animation */}
+      <style jsx global>{`
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        .animate-fade-in {
+          animation: fade-in 0.3s ease-out forwards;
+        }
+
+        .font-orbitron {
+          font-family: 'Orbitron', sans-serif;
+        }
+      `}</style>
     </div>
   );
 }
