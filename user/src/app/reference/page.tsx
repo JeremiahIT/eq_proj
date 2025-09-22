@@ -2,13 +2,13 @@
 
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image'; // Import the Image component
+import Image from 'next/image';
 
 export default function CombinedActivityCards() {
   const router = useRouter();
   const hasNavigatedRef = useRef(false);
   const [mounted, setMounted] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for the modal
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const openMenu = () => setIsMenuOpen(true);
   const closeMenu = () => setIsMenuOpen(false);
@@ -87,9 +87,31 @@ export default function CombinedActivityCards() {
 
       <main className="flex-1 flex items-center justify-center pt-24 pb-12">
         <div className={`max-w-5xl w-full bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl p-8 transition-all duration-500 ease-out ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+          {/* Key Takeaway Box - Moved to the top */}
+          <div className="border-2 border-yellow-400 bg-yellow-400/20 p-6 rounded-2xl mb-8 relative overflow-hidden shadow-lg">
+            <div className="absolute top-0 left-0 w-full h-full bg-yellow-400 opacity-10 blur-3xl rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
+            <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-yellow-400 opacity-10 blur-3xl rounded-full transform translate-x-1/2 translate-y-1/2"></div>
+            
+            <div className="flex items-start">
+              <div className="flex-shrink-0 mr-4">
+                <svg className="w-10 h-10 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-11a1 1 0 10-2 0v4a1 1 0 102 0V7zm3 1a1 1 0 100-2h-2a1 1 0 100 2h2z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-3xl font-bold text-yellow-400 mb-2">Key Takeaway</h3>
+                <p className="text-lg text-white font-medium">
+                  Disasters like earthquakes and volcanic eruptions may strike without warning, but **being prepared** is something we can always do. The lessons we learned today are not only for school but also for our everyday life. Remember, **preparedness saves lives**, and every precaution we practice can protect us and the people we love.
+                  <br /><br />
+                  Let us take every drill and every lesson seriously, because safety is not just a subject—it is a **way of life**.
+                </p>
+              </div>
+            </div>
+          </div>
+          {/* End of Key Takeaway Box */}
+          
           <div className="flex justify-center items-center relative mb-8">
             <div className="relative z-10">
-              {/* Corrected the img tag to use the Image component with a simple path */}
               <Image src="/referencecard.png" alt="Reference Card" width={200} height={150} className="w-96" />
             </div>
           </div>
