@@ -137,7 +137,7 @@ export default function CombinedActivityCards() {
         {/* Activity Section */}
         <div className="bg-white/10 backdrop-blur-xl p-8 rounded-2xl shadow-xl border border-white/20 relative overflow-hidden mb-8">
           {/* Removed Decorative hexagons */}
-          
+
           <h2 className="text-2xl font-semibold mb-2 text-white">Activity 1: Safety Check</h2>
           <p className="text-gray-200 mb-8">
             Instructions: Study the following illustrations. Put a check mark ✅ if the illustration shows safety precautions and ❌ if not.
@@ -188,7 +188,7 @@ export default function CombinedActivityCards() {
         <div className="flex justify-between items-start w-full mb-8 relative">
           <div className="bg-orange-400 p-4 px-12 rounded-full shadow-lg -rotate-6 transform -skew-y-3 relative z-10">
             <h1 className="text-xl font-bold text-gray-800">Activity 2</h1>
-            <h2 className="text-3xl font-bold text-white mt-1">"Yes or No"</h2>
+            <h2 className="text-3xl font-bold text-white mt-1">&quot;Yes or No&quot;</h2>
           </div>
           <div className="flex flex-col space-y-2 absolute top-0 right-0 m-4">
             <div className="w-10 h-10 bg-[#ff9900] transform -rotate-45 skew-y-12"></div>
@@ -196,7 +196,7 @@ export default function CombinedActivityCards() {
             <div className="w-10 h-10 bg-[#ffcc33] transform -rotate-45 skew-y-12"></div>
           </div>
         </div>
-        
+
         {/* What's In Card */}
         <div className="bg-white/10 backdrop-blur-xl p-8 rounded-2xl shadow-xl border border-white/20 w-full relative z-20">
           <div className="flex items-center mb-6">
@@ -205,21 +205,21 @@ export default function CombinedActivityCards() {
                 <span className="text-3xl text-gray-200">🧩</span>
               </div>
             </div>
-            <h3 className="text-3xl font-extrabold text-white">What's In</h3>
+            <h3 className="text-3xl font-extrabold text-white">What&apos;s In</h3>
           </div>
           <p className="text-gray-200 mb-6">
             <span className="font-bold">Direction:</span> Read the following statements below. Write <span className="font-bold">Yes</span> if the statement about earthquakes is true and <span className="font-bold">No</span> if not. Write your answers on a separate sheet of paper.
           </p>
           <ul className="space-y-4 text-lg">
-            <li>1. An earthquake is the shaking of the earth's crust.</li>
+            <li>1. An earthquake is the shaking of the earth&apos;s crust.</li>
             <li>2. All earthquakes have the same origin.</li>
             <li>3. Plate tectonic movements cause earthquakes.</li>
             <li>4. Not all earthquakes that occur are felt by people.</li>
             <li>5. The movement of tectonic plates causes a volcanic earthquake.</li>
-            </ul>
+          </ul>
         </div>
       </div>
-      
+
       {/* Activity 3 Content */}
       <div className="w-full max-w-4xl mt-8 pb-12">
         {/* Activity 3 Header */}
@@ -229,7 +229,7 @@ export default function CombinedActivityCards() {
             <h4 className="text-3xl font-bold text-white mt-1">Word Fill Challenge</h4>
           </div>
         </div>
-        
+
         {/* Word Fill Challenge Card */}
         <div className="bg-white/10 backdrop-blur-xl p-8 rounded-2xl shadow-xl border border-white/20 w-full relative z-20">
           <div className="flex flex-col md:flex-row items-center mb-6">
@@ -253,7 +253,7 @@ export default function CombinedActivityCards() {
               </div>
             </div>
           </div>
-          
+
           <ul className="space-y-6 mt-8 text-gray-200">
             <li className="bg-white/5 p-4 rounded-lg flex items-center">
               <span className="mr-4 font-bold text-white">1.</span>

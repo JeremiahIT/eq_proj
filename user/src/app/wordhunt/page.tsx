@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import Image from 'next/image';
 
 export default function WordHuntPage() {
   const router = useRouter();
@@ -30,19 +31,19 @@ export default function WordHuntPage() {
     };
   };
   const DIRECTIONS = [
-    { dr: 0, dc: 1 },    // right
-    { dr: 0, dc: -1 },   // left
-    { dr: 1, dc: 0 },    // down
-    { dr: -1, dc: 0 },   // up
-    { dr: 1, dc: 1 },    // down-right
-    { dr: 1, dc: -1 },   // down-left
-    { dr: -1, dc: 1 },   // up-right
-    { dr: -1, dc: -1 },  // up-left
+    { dr: 0, dc: 1 },    // right
+    { dr: 0, dc: -1 },   // left
+    { dr: 1, dc: 0 },    // down
+    { dr: -1, dc: 0 },   // up
+    { dr: 1, dc: 1 },    // down-right
+    { dr: 1, dc: -1 },   // down-left
+    { dr: -1, dc: 1 },   // up-right
+    { dr: -1, dc: -1 },  // up-left
   ];
 
   type PlacedWord = { word: string; cells: Array<{ r: number; c: number }>; };
 
-  const { grid, placed }: { grid: string[][]; placed: PlacedWord[] } = useMemo(() => {
+  const { grid }: { grid: string[][]; placed: PlacedWord[] } = useMemo(() => {
     const rng = createRng(1337); // fixed seed
     const gridArr: string[][] = Array.from({ length: GRID_SIZE }, () => Array(GRID_SIZE).fill(''));
     const placedWords: PlacedWord[] = [];
@@ -84,7 +85,7 @@ export default function WordHuntPage() {
     };
 
     // Place words (deterministically decide to reverse some to allow backwards)
-    WORDS.forEach((w, idx) => {
+    WORDS.forEach((w) => {
       const reverse = rng() < 0.5;
       const word = reverse ? w.split('').reverse().join('') : w;
       placeWord(word);
@@ -98,7 +99,7 @@ export default function WordHuntPage() {
       }
     }
     return { grid: gridArr, placed: placedWords };
-  }, []);
+  }, [DIRECTIONS, WORDS]);
 
   const isStraightPath = (start: { r: number; c: number }, end: { r: number; c: number }) => {
     const dr = end.r - start.r;
@@ -240,7 +241,7 @@ export default function WordHuntPage() {
             </div>
             {/* Team image below the card, outside the box */}
             <div className="mt-4 flex justify-center">
-              <img src="/wordhuntteam.png" alt="Word Hunt Team" className="w-full max-w-md h-auto opacity-95" />
+              <Image src="/wordhuntteam.png" alt="Word Hunt Team" width={500} height={300} className="w-full max-w-md h-auto opacity-95" />
             </div>
           </div>
 

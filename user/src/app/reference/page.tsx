@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image'; // Import the Image component
 
 export default function CombinedActivityCards() {
   const router = useRouter();
@@ -88,7 +89,8 @@ export default function CombinedActivityCards() {
         <div className={`max-w-5xl w-full bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl p-8 transition-all duration-500 ease-out ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
           <div className="flex justify-center items-center relative mb-8">
             <div className="relative z-10">
-              <img src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimage_eb6781.9b58097b.png&w=1920&q=75" alt="Reference Card" className="w-96" />
+              {/* Corrected the img tag to use the Image component with a simple path */}
+              <Image src="/referencecard.png" alt="Reference Card" width={384} height={300} className="w-96" />
             </div>
           </div>
           <h2 className="text-2xl font-bold text-white mb-6">Books and Modules</h2>

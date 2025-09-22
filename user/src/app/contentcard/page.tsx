@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
 export default function ContentCardPage() {
   const router = useRouter();
@@ -80,8 +81,8 @@ export default function ContentCardPage() {
           {["/1.png"].map((src, idx) => (
             <div key={src} className={`overflow-hidden transition-all duration-500 ease-out rounded-[24px] ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`} style={{ transitionDelay: `${idx * 80}ms` }}>
               <div className="relative w-full aspect-[4/3]">
-                {/* Note: In a real-world scenario, you should use the <Image> component from Next.js for better performance. */}
-                <img src={src} alt={`Content ${idx + 1}`} className="absolute inset-0 w-full h-full object-contain" />
+                {/* Note: Added placeholder width/height, replace with actual values for best performance */}
+                <Image src={src} alt={`Content ${idx + 1}`} layout="fill" objectFit="contain" />
               </div>
             </div>
           ))}
@@ -120,7 +121,6 @@ export default function ContentCardPage() {
         </div>
       )}
 
-      {/* Styles for Modal Animation - Ensure these are defined in a global CSS file or a style block */}
       <style jsx global>{`
         @keyframes fade-in {
           from {
