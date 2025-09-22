@@ -52,17 +52,6 @@ export default function Home() {
     };
   }, [router]);
 
-  const teachers = [
-    {
-      id: 1,
-      name: "Mark Randolph G. Sanchez",
-      role: "Science Teacher",
-      image: "/boy.png",
-      alt: "Mark Randolph G. Sanchez",
-    },
-    // Removed the 'girl' teacher from this array
-  ];
-
   const menuItems = [
     { name: 'Overview', path: '/overview' },
     { name: 'Content Card', path: '/contentcard' },
@@ -101,71 +90,57 @@ export default function Home() {
         </button>
       </header>
 
-      {/* Main */}
-      <main className="flex-1 flex flex-col items-center pt-8 text-center">
-        {/* Main Title - ENHANCED with AI-like glow and futuristic look */}
-        <div className="flex flex-col mr-auto ml-8 text-left animate-text-glow">
-          <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 tracking-wide">
-            <span className="font-orbitron text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-red-400 drop-shadow-lg leading-tight">
-              ELECTRONIC STRATEGIC
-            </span>
-          </h1>
-          <h2 className="text-2xl sm:text-3xl mt-2 font-rajdhani text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 drop-shadow-md leading-snug">
-            INTERVENTION MATERIALS
-            IN SCIENCE 6
-          </h2>
-        </div>
+      {/* Main Content */}
+      <main className="flex-1 flex flex-col items-center justify-center p-8 text-center relative z-0">
+        <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-7xl px-4">
+          {/* Left Section: Teacher's Info and Image */}
+          <div className="flex flex-col items-center mb-8 md:mb-0 md:mr-8 flex-1">
+            <h1 className="text-xl md:text-2xl font-bold mb-2 text-white text-shadow-lg animate-fade-in-down">
+              ELECTRONIC STRATEGIC INTERVENTION
+            </h1>
+            <h2 className="text-base md:text-xl font-medium mb-8 text-gray-300 animate-fade-in-down delay-200">
+              MATERIALS IN SCIENCE 6
+            </h2>
+            <div className="relative w-[250px] h-[250px] md:w-[300px] md:h-[300px] rounded-full overflow-hidden shadow-lg animate-fade-in-left">
+              {/* Added div for the gradient circle background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-600 to-red-900 rounded-full z-0"></div>
+              <Image
+                src="/boy.png"
+                alt="Mark Randolph G. Sanchez"
+                fill
+                style={{ objectFit: 'contain' }}
+                priority
+                className="relative z-10" // Make sure the image is above the background
+              />
+            </div>
+            <div className="mt-4 text-center animate-fade-in-up delay-400">
+              <p className="text-xl md:text-2xl font-semibold text-white">
+                MARK RANDOLPH G. SANCHEZ
+              </p>
+              <p className="text-md md:text-xl text-gray-400">
+                Science Teacher
+              </p>
+            </div>
+          </div>
 
-        {/* Title Card on semi-right */}
-        <div className="absolute -top-25 right-5 w-[1200px] h-[1200px] animate-pulse-glow">
-          <Image
-            src="/titlecard.png"
-            alt="Title Card"
-            layout="fill"
-            objectFit="contain"
-            className="drop-shadow-lg"
-          />
-        </div>
-
-        {/* Teachers Section - Now a 3D card carousel on the left */}
-        <div className="absolute bottom-[45%] translate-y-1/2 left-[20%] transform -translate-x-1/2 w-full max-w-lg z-20">
-          <Swiper
-            effect={'coverflow'}
-            grabCursor={true}
-            centeredSlides={true}
-            slidesPerView={'auto'}
-            coverflowEffect={{
-              rotate: 20,
-              stretch: 0,
-              depth: 250,
-              modifier: 1,
-              slideShadows: false,
-            }}
-            pagination={{ clickable: true }}
-            navigation={true}
-            modules={[EffectCoverflow, Pagination, Navigation]}
-            className="mySwiper"
-          >
-            {teachers.map((teacher) => (
-              <SwiperSlide key={teacher.id}>
-                <div className="group relative bg-gray-800/60 backdrop-blur-sm rounded-xl overflow-hidden shadow-2xl p-4 flex flex-col items-center w-full h-full border border-transparent transition-all duration-500 hover:border-orange-500/50 hover:shadow-3d-orange">
-                  <div className="relative w-64 h-64 mb-4 transform transition-transform duration-500 group-hover:scale-105">
-                    <Image
-                      src={teacher.image}
-                      alt={teacher.alt}
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-lg shadow-lg"
-                    />
-                  </div>
-                  <div className="text-center mt-auto transform transition-transform duration-500 group-hover:translate-y-1">
-                    <p className="text-xl font-bold">{teacher.name}</p>
-                    <p className="text-lg font-light text-gray-300">{teacher.role}</p>
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          {/* Right Section: Title Card with Effects */}
+          <div className="flex-1 flex justify-center items-center relative w-[700px] h-[700px] md:w-[900px] md:h-[900px]">
+            {/* Title with AI-like effect */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[150%] z-10 w-full text-center">
+            </div>
+            {/* Title Card Image with Shakey Bounce Effect */}
+            <div className="relative w-full h-full animate-shakey-bounce">
+              <Image
+                src="/titlecard.png"
+                alt="Earthquake and Volcano Title Card"
+                fill
+                style={{ objectFit: 'contain' }}
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="transform hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          </div>
         </div>
       </main>
 
@@ -183,7 +158,7 @@ export default function Home() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            <h2 className="text-3xl font-extrabold text-white text-center mb-6 font-orbitron">
+            <h2 className="text-3xl font-extrabold text-white text-center mb-6 font-sans">
               MENU
             </h2>
             <div className="grid grid-cols-1 gap-4">
@@ -201,118 +176,120 @@ export default function Home() {
         </div>
       )}
 
-      {/* Add custom keyframes for the animation */}
+      {/* Custom Styles */}
       <style jsx global>{`
-        /* Import Google Fonts for futuristic look */
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@500;700&display=swap');
-
-        .font-orbitron {
-          font-family: 'Orbitron', sans-serif;
-        }
-        .font-rajdhani {
-          font-family: 'Rajdhani', sans-serif;
-        }
-
-        @keyframes pulse-glow {
-          0%, 100% {
-            transform: scale(1);
-            filter: brightness(1);
-            opacity: 1;
-          }
-          50% { 
-            transform: scale(1.02);
-            filter: brightness(1.2);
-            opacity: 0.95;
-          }
-        }
-        .animate-pulse-glow {
-          animation: pulse-glow 3s ease-in-out infinite;
-        }
-
-        /* NEW: Text glow animation for the title */
-        @keyframes text-glow-animation {
-          0%, 100% {
-            text-shadow: 
-              0 0 5px rgba(128, 0, 128, 0.7), /* Purple glow */
-              0 0 10px rgba(0, 0, 255, 0.5),  /* Blue glow */
-              0 0 15px rgba(255, 0, 0, 0.3);  /* Red glow */
-          }
-          50% {
-            text-shadow: 
-              0 0 8px rgba(255, 0, 255, 0.9), /* More intense pink/purple */
-              0 0 15px rgba(0, 191, 255, 0.7), /* Cyan glow */
-              0 0 20px rgba(255, 100, 0, 0.5); /* Orange glow */
-          }
-        }
-        .animate-text-glow {
-          animation: text-glow-animation 4s ease-in-out infinite alternate;
-        }
-
-        /* Custom glow shadow for the cards on hover */
-        .hover\\:shadow-3d-orange:hover {
-          box-shadow: 0 0 15px rgba(255, 120, 0, 0.5), 0 0 30px rgba(255, 120, 0, 0.3), 0 0 45px rgba(255, 120, 0, 0.1);
-        }
-
-        /* Swiper styles for the card carousel */
-        .swiper {
-          width: 100%;
-          padding-top: 50px;
-          padding-bottom: 50px;
-        }
-
-        .swiper-slide {
-          background-position: center;
-          background-size: cover;
-          width: 350px;
-          height: 450px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        
-        /* Custom Swiper Navigation (Arrows) */
-        .swiper-button-next, .swiper-button-prev {
-          color: #ff7800 !important;
-          top: 50% !important;
-          transform: translateY(-50%) scale(0.8) !important;
-          transition: all 0.3s ease-in-out;
-          opacity: 0.5;
-        }
-
-        .swiper-button-next:hover, .swiper-button-prev:hover {
-          transform: translateY(-50%) scale(1) !important;
-          opacity: 1;
-        }
-        
-        /* Custom Swiper Pagination (Dots) */
-        .swiper-pagination-bullet {
-          background: rgba(255, 255, 255, 0.3) !important;
-          width: 10px !important;
-          height: 10px !important;
-          margin: 0 5px !important;
-          transition: all 0.3s ease-in-out;
-        }
-
-        .swiper-pagination-bullet-active {
-          background: #ff7800 !important;
-          width: 15px !important;
-          height: 15px !important;
-          transform: scale(1.2);
-        }
-
-        /* New keyframes for modal animation */
-        @keyframes fade-in {
+        @keyframes fadeInDown {
           from {
             opacity: 0;
-            transform: scale(0.9);
+            transform: translateY(-20px);
           }
           to {
             opacity: 1;
-            transform: scale(1);
+            transform: translateY(0);
           }
         }
-        .animate-fade-in {
-          animation: fade-in 0.3s ease-out forwards;
+
+        @keyframes fadeInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes glitch {
+          0% {
+            transform: translate(0, 0);
+          }
+          20% {
+            transform: translate(-5px, 5px);
+          }
+          40% {
+            transform: translate(-5px, -5px);
+          }
+          60% {
+            transform: translate(5px, 5px);
+          }
+          80% {
+            transform: translate(5px, -5px);
+          }
+          100% {
+            transform: translate(0, 0);
+          }
+        }
+
+        @keyframes shake {
+          0%, 100% {
+            transform: translateX(0);
+          }
+          10%, 30%, 50%, 70%, 90% {
+            transform: translateX(-5px);
+          }
+          20%, 40%, 60%, 80% {
+            transform: translateX(5px);
+          }
+        }
+
+        @keyframes shakey-bounce {
+          0%, 100% {
+            transform: translate(0, 0);
+          }
+          15% {
+            transform: translate(5px, -5px);
+          }
+          30% {
+            transform: translate(-5px, 5px);
+          }
+          45% {
+            transform: translate(0, -10px);
+          }
+          60% {
+            transform: translate(5px, 5px);
+          }
+          75% {
+            transform: translate(-5px, -5px);
+          }
+          90% {
+            transform: translate(0, 5px);
+          }
+        }
+        
+        .animate-fade-in-down {
+          animation: fadeInDown 0.8s ease-out forwards;
+        }
+
+        .animate-fade-in-left {
+          animation: fadeInLeft 0.8s ease-out forwards;
+        }
+
+        .animate-fade-in-up {
+          animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-glitch {
+          animation: glitch 1s infinite;
+        }
+
+        .animate-shakey-bounce {
+          animation: shakey-bounce 2s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .text-shadow-lg {
+          text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
         }
       `}</style>
     </div>
