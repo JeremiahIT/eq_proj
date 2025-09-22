@@ -69,7 +69,6 @@ export default function Home() {
     { name: 'Word Hunt', path: '/wordhunt' },
     { name: 'Assessment', path: '/assesment' },
     { name: 'Activity Card', path: '/activitycard' },
-    { name: 'Answer Key', path: '/answerkey' },
     { name: 'Reference', path: '/reference' },
   ];
 
@@ -108,7 +107,7 @@ export default function Home() {
         <div className="flex flex-col mr-auto ml-8 text-left animate-text-glow">
           <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 tracking-wide">
             <span className="font-orbitron text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-red-400 drop-shadow-lg leading-tight">
-              CONVENTIONAL STRATEGIC
+              ELECTRONIC STRATEGIC
             </span>
           </h1>
           <h2 className="text-2xl sm:text-3xl mt-2 font-rajdhani text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 drop-shadow-md leading-snug">

@@ -16,7 +16,6 @@ export default function CombinedActivityCards() {
     { name: 'Word Hunt', path: '/wordhunt' },
     { name: 'Assessment', path: '/assesment' },
     { name: 'Activity Card', path: '/activitycard' },
-    { name: 'Answer Key', path: '/answerkey' },
     { name: 'Reference', path: '/reference' },
   ];
 
@@ -145,39 +144,14 @@ export default function CombinedActivityCards() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="relative p-4 border border-white/20 rounded-lg">
               <div className="relative h-48 w-full rounded-md mb-2">
-                <Image src="/studying.jpg" alt="A person studying an evacuation plan" layout="fill" objectFit="cover" className="rounded-md" />
+                <Image src="/video.png" alt="Students are hiding under a sturdy desk during an earthquake." layout="fill" objectFit="cover" className="rounded-md" />
               </div>
-              <p className="text-center text-sm text-gray-200">1. Studying the evacuation plan before the disaster strikes.</p>
+              <p className="text-center text-sm text-gray-200">1. Pls. Refer to the Video Lesson</p>
               <div className="absolute top-2 right-2 w-8 h-8 border-2 border-yellow-500 bg-yellow-100 rounded-md"></div>
             </div>
-            <div className="relative p-4 border border-white/20 rounded-lg">
-              <div className="relative h-48 w-full rounded-md mb-2">
-                <Image src="/panic.jpg" alt="People panicking and running during an earthquake" layout="fill" objectFit="cover" className="rounded-md" />
-              </div>
-              <p className="text-center text-sm text-gray-200">2. Panic and run. Ignore the people in front of you during the earthquake.</p>
-              <div className="absolute top-2 right-2 w-8 h-8 border-2 border-yellow-500 bg-yellow-100 rounded-md"></div>
-            </div>
-            <div className="relative p-4 border border-white/20 rounded-lg">
-              <div className="relative h-48 w-full rounded-md mb-2">
-                <Image src="/emegencybag.jpg" alt="An emergency bag prepared before a disaster" layout="fill" objectFit="cover" className="rounded-md" />
-              </div>
-              <p className="text-center text-sm text-gray-200">3. Make sure to have an emergency bag prepared before a disaster occurs.</p>
-              <div className="absolute top-2 right-2 w-8 h-8 border-2 border-yellow-500 bg-yellow-100 rounded-md"></div>
-            </div>
-            <div className="relative p-4 border border-white/20 rounded-lg">
-              <div className="relative h-48 w-full rounded-md mb-2">
-                <Image src="/stayoutside.jpg" alt="People staying outside and taking selfies during a volcanic eruption" layout="fill" objectFit="cover" className="rounded-md" />
-              </div>
-              <p className="text-center text-sm text-gray-200">4. Stay outside, take a selfie, and avoid using a face mask during a volcanic eruption warning.</p>
-              <div className="absolute top-2 right-2 w-8 h-8 border-2 border-yellow-500 bg-yellow-100 rounded-md"></div>
-            </div>
-            <div className="relative p-4 border border-white/20 rounded-lg">
-              <div className="relative h-48 w-full rounded-md mb-2">
-                <Image src="/stayupdated.jpg" alt="A person staying updated with news on a phone" layout="fill" objectFit="cover" className="rounded-md" />
-              </div>
-              <p className="text-center text-sm text-gray-200">5. Stay updated with the news before and after the disaster.</p>
-              <div className="absolute top-2 right-2 w-8 h-8 border-2 border-yellow-500 bg-yellow-100 rounded-md"></div>
-            </div>
+           
+           
+           
           </div>
         </div>
       </div>
@@ -207,15 +181,17 @@ export default function CombinedActivityCards() {
             </div>
             <h3 className="text-3xl font-extrabold text-white">What&apos;s In</h3>
           </div>
-          <p className="text-gray-200 mb-6">
-            <span className="font-bold">Direction:</span> Read the following statements below. Write <span className="font-bold">Yes</span> if the statement about earthquakes is true and <span className="font-bold">No</span> if not. Write your answers on a separate sheet of paper.
+          <p>
+            <span className="font-bold">Direction:</span> Read each situation carefully. Write{" "}
+            <span className="font-bold">Yes</span> if the action shows the correct safety measure, and{" "}
+            <span className="font-bold">No</span> if it does not. Write your answers on a separate sheet of paper.
           </p>
           <ul className="space-y-4 text-lg">
-            <li>1. An earthquake is the shaking of the earth&apos;s crust.</li>
-            <li>2. All earthquakes have the same origin.</li>
-            <li>3. Plate tectonic movements cause earthquakes.</li>
-            <li>4. Not all earthquakes that occur are felt by people.</li>
-            <li>5. The movement of tectonic plates causes a volcanic earthquake.</li>
+            <li>1. During an earthquake, Ana quickly hides under a sturdy table to protect herself. <strong>Yes</strong></li>
+            <li>2. While playing outside, Pedro sees ashfall from a volcanic eruption and decides not to wear a mask. <strong>No</strong></li>
+            <li>3. During an earthquake drill, students calmly walk to the evacuation area without pushing. <strong>Yes</strong></li>
+            <li>4. Juan and his family stay near the river even after PHILVOCS warns of possible lahar flow from the volcano. <strong>No</strong></li>
+            <li>5. After an earthquake, Maria checks if her younger siblings are safe before leaving the house. <strong>Yes</strong></li>
           </ul>
         </div>
       </div>

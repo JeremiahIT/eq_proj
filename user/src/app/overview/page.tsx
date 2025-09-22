@@ -56,7 +56,6 @@ export default function OverviewPage() {
     { name: 'Word Hunt', path: '/wordhunt' },
     { name: 'Assessment', path: '/assesment' },
     { name: 'Activity Card', path: '/activitycard' },
-    { name: 'Answer Key', path: '/answerkey' },
     { name: 'Reference', path: '/reference' },
   ];
 

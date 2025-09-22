@@ -188,12 +188,7 @@ export default function CombinedActivityCards() {
               >
                 Activity Card
               </button>
-              <button
-                onClick={() => handleNavigation('/answerkey')}
-                className="bg-teal-500 text-white font-semibold py-3 px-6 rounded-full hover:bg-teal-600 transition-colors duration-300"
-              >
-                Answer Key
-              </button>
+
               <button
                 onClick={() => handleNavigation('/reference')}
                 className="bg-pink-500 text-white font-semibold py-3 px-6 rounded-full hover:bg-pink-600 transition-colors duration-300"
